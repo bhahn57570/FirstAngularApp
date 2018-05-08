@@ -1,0 +1,26 @@
+<h3>Brands</h3>
+<div>
+  <label>Brand name:
+    <input #brandName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(brandName.value); brandName.value=''">
+    add
+  </button>
+  <button (click)="search(brandName.value)">
+    search
+  </button>
+</div>
+
+<ul class="brands">
+  <li *ngFor="let brand of brands">
+    <a (click)="edit(brand)">
+      <span class="badge">{{ brand.id || -1 }}</span>
+      <span *ngIf="brand!==editBrand">{{brand.name}}</span>
+      <input *ngIf="brand===editBrand" [(ngModel)]="brand.name"
+        (blur)="update()" (keyup.enter)="update()">
+    </a>
+    <button class="delete" title="delete brand"
+    (click)="delete(brand)">x</button>
+  </li>
+</ul>

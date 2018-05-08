@@ -1,0 +1,201 @@
+<alert></alert>
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <h1>
+    Welcome with title null but handled {{ titleNull }}!
+  </h1>
+
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<nav>
+  <a routerLink="/dashboard" routerLinkActive="toto">Dashboard</a>
+  <a routerLink="/heroes" routerLinkActive="toto">Heroes</a>
+  <a [routerLink]="['/detail', 11, { id: 11, foo: 'foo' } ]">Detail 11</a>
+  <a [routerLink]="['/detail', { foo: 'foo' }]">Detaail foo</a>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a routerLink="/admin" routerLinkActive="active">Admin</a>
+  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+  <a [routerLink]="[{ outlets: { popupTest: ['composeTest'] } }]">Contact TEst</a>
+  <a [routerLink]="[{ outlets: { popup: ['compose'], popupTest: ['composeTest'] } }]">Contact TEst 2</a>
+  <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+  <a routerLink="/home" routerLinkActive="active">home</a>
+</nav>
+<p [appHighlight]="color" defaultColor="violet">
+  Highlight me too!
+</p>
+<h2>HERO 1 non null {{ heroStaticToTest.name }} Details</h2> 
+<h2>HERO 2 null {{ heroStaticToTestNull?.name }} Details</h2> 
+<h2>HERO 3 nullName {{ heroStaticToTestNullName?.name }}   {{ heroStaticToTestNullName?.id }}Details</h2> 
+<h2>Here are some links to help you start: </h2>
+<!-- <app-heroes></app-heroes> -->
+
+
+<router-outlet></router-outlet>
+
+<router-outlet name="popup"></router-outlet>
+<router-outlet name="popupTest"></router-outlet>
+<app-test-ben></app-test-ben>
+
+<app-input-output (outputTest)="onOutput($event)" valeurTest="kkkk" [inputtest]="inputtestVar" [master]="'master alias'" [(size)]="fontSizePx">
+
+TOTO
+
+</app-input-output>
+
+{{ valeurTest }}
+
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+
+<!-- <img [src]="heroImageUrl"> -->
+
+<p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
+<p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
+
+<p><span>"{{title}}" is the <i>interpolated</i> title.</span></p>
+<p>"<span [innerHTML]="title"></span>" is the <i>property bound</i> title.</p>
+
+<p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>c
+<p>"<span [innerHTML]="evilTitle"></span>" is the <i>property bound</i> evil title.</p>
+
+<table border=1>
+  <!--  expression calculates colspan=2 -->
+  <tr><td [attr.colspan]="1 + 1"  [attr.ss]="erer">One-Two</td></tr>
+
+  <!-- ERROR: There is no `colspan` property to set!
+    <tr><td colspan="{{1 + 1}}">Three-Four</td></tr>
+  -->
+
+  <tr><td>Five</td><td>Six</td></tr>
+</table>
+  <!-- create and set an aria attribute for assistive technology -->
+<button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+  <!-- create and set an aria attribute for assistive technology -->
+  <button attr.aria-label="Fermer">sss with Aria</button>
+
+  <button [style.font-size.em]="true ? 3 : 1" >Big</button>
+  <button [style.font-size.%]="!true ? 150 : 50" >Small</button>
+
+  <button [style.color]="true ? 'red': 'green'">Red</button>
+  <button [style.background-color]="true ? 'cyan': 'grey'"  [style.color]="'red'" >Save</button>
+
+  <p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }}</p>
+
+  <p>The hero's birthday is {{ birthday | date:format }}</p>
+  <button (click)="toggle = !toggle">Toggle Format</button>
+
+  <p>chained hero's birthday is
+    {{  birthday | date:'fullDate' | uppercase}}</p> 
+
+
+    <p>Super power boost: {{2 | exponentialStrength: 10}}</p>
+    <h2>Power Boost Calculator</h2>
+    <div>Normal power: <input [(ngModel)]="power"></div>
+    <div>Boost factor: <input [(ngModel)]="factor"></div>
+    <p>
+      Super Hero Power: {{power | exponentialStrength: factor}}
+    </p>
+
+  <app-mission-control></app-mission-control>
+
+
+  <h2 id="appUnless">UnlessDirective</h2>
+  <p>
+    The condition is currently
+    <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+    <button
+      (click)="condition = !condition"
+      [ngClass] = "{ 'a': condition, 'b': !condition }" >
+      Toggle condition to {{condition ? 'false' : 'true'}}
+    </button>
+  </p>
+  <p *appUnless="condition" class="unless a">
+    (A) This paragraph is displayed because the condition is false.
+  </p>
+  
+  <p *appUnless="!condition" class="unless b">
+    (B) Although the condition is true,
+    this paragraph is displayed because appUnless is set to false.
+  </p>
+  
+  
+  <h4>UnlessDirective with template</h4>
+  
+  <p *appUnless="condition">Show this sentence unless the condition is true.</p>
+  
+  <p *appUnless="condition" class="code unless">
+    (A) &lt;p *appUnless="condition" class="code unless"&gt;
+  </p>
+  
+  <ng-template [appUnless]="condition">
+    <p class="code unless">
+      (A) &lt;ng-template [appUnless]="condition"&gt;
+    </p>
+  </ng-template>
+
+  <p id="anchor"></p>
+  <a id="flying-heroes"></a>
+  <app-flying-heroes></app-flying-heroes>
+  
+  <hr>
+  <a id="flying-heroes-impure"></a>
+  <app-flying-heroes-impure></app-flying-heroes-impure>
+
+<app-messages></app-messages>
+
+
+<div class="di-component">
+  <app-hero-of-the-month></app-hero-of-the-month>
+</div>  
+
+<observable-test></observable-test>
+
+<app-config></app-config>
+
+<app-brands></app-brands>
+
+<app-package-search></app-package-search>
+
+
+<!-- <app-hero-form></app-hero-form> -->
+
+
+<button (click)="templateToggle = !templateToggle">Toggle Template TEst {{templateToggle}}</button>
+<div class="" *ngIf="templateToggle else loading">
+eeeeeeeeeeeeeeeee
+</div>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
+
+
+<ng-template #estimateTemplate let-lessonsCounter="estimate">
+  <div> Approximately {{lessonsCounter}} lessons ...</div>
+</ng-template>
+<ng-container 
+ *ngTemplateOutlet="estimateTemplate;context:ctx">
+</ng-container>
+
+<ng-template #defaultTabButtons>
+  <button class="tab-button" (click)="login()">
+    {{loginText}}
+  </button>
+  <button class="tab-button" (click)="signUp()">
+    {{signUpText}}
+  </button>
+</ng-template>
+
+<app-list-template>
+
+    <ng-template let-item="item">
+
+        {{item}} - JAIME LES TEMPLATES
+      </ng-template>
+
+</app-list-template>
+
+<app-list-template></app-list-template>

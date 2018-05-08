@@ -1,0 +1,22 @@
+$color: red;
+
+@mixin my-border($color) {
+  border: 1px solid $color;
+}
+
+.testscss {
+  background: $color;
+  @include my-border(green);
+}
+
+.bleuFont {
+    color: blue;
+}
+
+.redBack {
+    background-color: red;
+}
+
+.italicFont {
+    font-style: italic;
+}

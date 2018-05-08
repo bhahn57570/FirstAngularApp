@@ -1,0 +1,58 @@
+<!-- <h2>{{ heroStatic.name }} Details</h2>
+<div>
+  <span>id: </span>{{heroStatic.id}}</div>
+<div>
+  <span>name: </span>{{heroStatic.name}}</div>
+
+<h2>{{ heroStatic.name | uppercase }} Details</h2>
+
+<div>
+  <label>name:
+    <input [(ngModel)]="heroStatic.name" placeholder="name">
+  </label>
+</div> -->
+
+<!-- 
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" class="special" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+    <span class="badge toto">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul> -->
+
+
+<h2>My Heroes</h2>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+    </li>
+  </ul>
+
+  <p *ngIf="heroes.length > 3">There are more than 3 hereos!</p>
+
+  <ul class="items">
+    <li *ngFor="let hero of heroes$ | async"
+      [class.selected]="hero.id === selectedId">
+      <a [routerLink]="['/detail', hero.id]">
+        <span class="badge">{{ hero.id }}</span>{{ hero.name }}
+      </a>
+    </li>
+  </ul>
+
+  <button routerLink="/sidekicks">Go to sidekicks</button>
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
+<app-messages></app-messages> -->

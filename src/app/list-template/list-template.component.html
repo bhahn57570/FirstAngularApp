@@ -1,0 +1,13 @@
+<ul style="border: 2px solid red">
+  <li *ngFor="let item of items">
+    <ng-container *ngTemplateOutlet="headerTemplate ? headerTemplate: defaultTabButtons; context: {item: item}">
+    </ng-container>
+    <!-- <ng-container *ngTemplateOutlet="defaultTabButtons; context: {item: itemsz}">
+      </ng-container> -->
+  </li>
+</ul>
+
+
+<ng-template let-item="item" #defaultTabButtons>
+  {{ item }}
+</ng-template>

@@ -1,0 +1,11 @@
+.toto {
+    background-color: aqua;
+}
+
+.selected {
+    background-color: red;
+}
+
+.special {
+    font-style: oblique;
+}

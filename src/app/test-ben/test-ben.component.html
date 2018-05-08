@@ -1,0 +1,12 @@
+<p>TEST 1 BINDING : The sum of 1 + 1 is not {{1 + 1}}</p>
+<p>TEST 2 BINDING : roro not {{roro}}</p>
+<p>TEST 3 BINDING : roro not {{"roro"}}</p>
+<p>TEST 4 BINDING : The sum of 1 + 1 function is not {{1 + 1 + getVal()}} </p>
+
+<span [hidden]="isUnchanged">I AM THE TRUTH</span>
+
+<button (click)="tooggleUnchanged()">Tooggle the truth</button>
+
+<button (click)="counter=32">Counter value {{counter}}</button>
+<button (click)="counter=32;counter=45">Counter value {{counter}}</button>
+<!-- <button (click)="counter--">Counter value {{counter}}</button> -->

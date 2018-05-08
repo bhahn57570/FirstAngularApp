@@ -1,0 +1,74 @@
+<div *ngIf="inputtest">
+
+  <h2>{{ inputtest.name | uppercase }} INPUT TEST</h2>
+  <p>
+    {{ inputtest.title }}
+  </p>
+  <div class="testscss">
+  {{ valeurTest }} OO
+
+  {{ masterName }} 
+</div>
+  <div (click)="outputAString()">outputAString</div>
+
+  <div>
+    <button (click)="dec()" title="smaller">-</button>
+    <button (click)="inc()" title="bigger">+</button>
+    <label [style.font-size.px]="size">FontSize: {{size}}px</label>
+  </div>
+
+
+  <div id="52" [ngClass]="currentClasses">This div is initially bleuFont redBack italicFont</div>
+
+  <div [ngStyle]="currentStyles">
+    This div is initially italic, normal weight, and extra large (24px).
+  </div>
+
+  <h3>Exemple de switch</h3>
+  italicFont ==    {{ italicFont }}
+  <div [ngSwitch]="italicFont">
+    <!-- <app-happy-hero    *ngSwitchCase="'happy'"    [hero]="currentHero"></app-happy-hero>
+    <app-sad-hero      *ngSwitchCase="'sad'"      [hero]="currentHero"></app-sad-hero>
+    <app-confused-hero *ngSwitchCase="'confused'" [hero]="currentHero"></app-confused-hero>
+    <app-unknown-hero  *ngSwitchDefault           [hero]="currentHero"></app-unknown-hero> -->
+    <div *ngSwitchCase=1>italicFont et égal a 1</div>
+    <div *ngSwitchCase=2>italicFont et égal a 2</div>
+    <div *ngSwitchCase="dd">italicFont et égal a 2</div>
+    <!-- <div *ngSwitchCase="'confused'">Are you as confused as {{currentHero.name}}?</div>
+    <div *ngSwitchCase="'confused'">Are you as confused as {{currentHero.name}}?</div> -->
+  </div>
+
+  <input #phone placeholder="phone number">
+
+<!-- lots of other elements -->
+
+<!-- phone refers to the input element; pass its `value` to an event handler -->
+<button (click)="console.log(phone.value);">Call</button>
+
+<h2>Master controls {{names.length}} names</h2>
+<app-name-child *ngFor="let name of names" [name]="name"></app-name-child>
+
+<h3>Countdown to Liftoff (via local variable)</h3>
+<button (click)="timer.start()">Start</button>
+<button (click)="timer.stop()">Stop</button>
+<div class="seconds">{{timer.seconds}}</div>
+<app-countdown-timer #timer></app-countdown-timer>
+
+<h2>Mission Control</h2>
+<button (click)="announce()">Announce mission</button>
+<app-astronaut *ngFor="let astronaut of astronauts"
+  [astronaut]="astronaut">
+</app-astronaut>
+<h3>History</h3>
+<ul>
+  <li *ngFor="let event of history">{{event}}</li>
+</ul>
+ss
+<app-ad-banner [ads]="ads"></app-ad-banner>
+ss
+</div>
+
+
+NG CONTENT
+<ng-content></ng-content>
+NG CONTENT
